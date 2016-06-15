@@ -21,6 +21,8 @@ Platform for students to find classmates and organize study groups.
 | import/ui/pages/user-page...          | Display a single classmate page. (home layout)      |
 | import/ui/pages/study-groups-page...  | Display my study groups page. (home layout)         |
 | import/ui/pages/create-page...        | Create study group page. (home layout)              |
+| import/ui/pages/edit-page...          | Edit student information page. (edit layout)        |
+| import/ui/pages/login-page...         | Login page. (login layout)                          |
 | import/ui/components/header...        | Header component for the home layout.               |
 | import/ui/components/sidebar...       | Sidebar component for the home layout.              |
 | import/ui/components/study-group...   | Study group component for study groups page.        |
