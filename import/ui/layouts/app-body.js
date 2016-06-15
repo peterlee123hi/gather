@@ -11,7 +11,7 @@ import { TAPi18n } from 'meteor/tap:i18n';
 
 Template.App_body.onCreated(function appBodyOnCreated() {
   if (!Meteor.user()) {
-    FlowRouter.go('App.login');
+    FlowRouter.go('login');
   }
 
   // Add subscriptions

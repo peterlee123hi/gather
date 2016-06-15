@@ -17,7 +17,6 @@ Platform for students to find classmates and organize study groups.
 | import/ui/layouts/app-body...         | Layout for home page of logged in users.            |
 | import/ui/layouts/login-body...       | Layout for login page.                              |
 | import/ui/layouts/edit-body...        | Layout for new student additional information page. |
-| import/ui/pages/edit-page...          | Edit my information page. (home layout)             |
 | import/ui/pages/users-page...         | Display classmates page. (home layout)              |
 | import/ui/pages/user-page...          | Display a single classmate page. (home layout)      |
 | import/ui/pages/study-groups-page...  | Display my study groups page. (home layout)         |

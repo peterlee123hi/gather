@@ -9,6 +9,18 @@ Meteor.users.deny({
   },
 });
 
+const AUTH_METHODS = [
+  'login',
+  'logout',
+  'logoutOtherClients',
+  'getNewToken',
+  'removeOtherTokens',
+  'configureLoginService',
+  'createUser',
+  'ATRemoveService',
+  'ATCreateUserServer'
+];
+
 if (Meteor.isServer) {
   // Only allow 2 login attempts per connection per 5 seconds
   DDPRateLimiter.addRule({
