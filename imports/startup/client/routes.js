@@ -1,6 +1,5 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
-import { AccountsTemplates } from 'meteor/useraccounts:core';
 
 // Import to load templates including layouts and pages
 import '../../ui/layouts/app-body.js';
@@ -14,12 +13,12 @@ import '../../ui/pages/study-groups-page.js';
 import '../../ui/pages/create-page.js';
 import '../../ui/pages/user-page.js';
 
-// Define routes
+// Configure routes
 FlowRouter.route('/', {
   name: 'App.home',
   action() {
     BlazeLayout.render('App_body', { main: 'Users_page' });
-  }
+  },
 });
 
 FlowRouter.route('/edit', {
@@ -50,11 +49,9 @@ FlowRouter.route('/user/:_id', {
   },
 });
 
-// Configure account routess
-AccountsTemplates.configureRoute('signIn', {
-  name: 'login',
-  path: '/login',
-  template: 'Login_page',
-  layoutTemplate: 'Login_body',
-  contentRegion: 'main'
+FlowRouter.route('/login', {
+  name: 'App.login',
+  action() {
+    BlazeLayout.render('Login_body', { main: 'Login_page' });
+  }
 });
