@@ -17,7 +17,7 @@ StudyGroups.schema = new SimpleSchema({
     max: 36
   },
   date: {
-    type: date
+    type: Date
   },
   location: {
     type: String,
