@@ -1,0 +1,1 @@
+import './create-page.html';

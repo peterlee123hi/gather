@@ -1,1 +1,1 @@
-import './edit-body.html'
+import './edit-body.html';
