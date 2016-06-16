@@ -6,9 +6,9 @@ import { StudyGroups } from '../study-groups.js';
 // It's suppose to find every study group
 // where the student is a member of the
 // study group.
-Meteor.publish('studyGroups.retrieve', function studyGroupsRetieve() {
+Meteor.publish('studyGroups', function studyGroups() {
   return StudyGroups.find({
-    members: { $elemMatch: this.userId }
+    members: this.userId
   }, {
     fields: StudyGroups.publicFields
   });

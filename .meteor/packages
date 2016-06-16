@@ -28,6 +28,5 @@ kadira:blaze-layout
 aldeed:simple-schema
 fourseven:scss
 seba:minifiers-autoprefixer
-reywood:bootstrap3-sass
 aldeed:collection2
 zimme:active-route

@@ -96,7 +96,6 @@ reactive-dict@1.1.8
 reactive-var@1.0.10
 reload@1.1.9
 retry@1.0.8
-reywood:bootstrap3-sass@3.3.5_2
 routepolicy@1.0.11
 seba:minifiers-autoprefixer@1.0.1
 service-configuration@1.0.10

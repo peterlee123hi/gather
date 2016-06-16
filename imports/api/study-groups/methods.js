@@ -22,7 +22,6 @@ export const remove = new ValidatedMethod({
   name: 'studyGroups.remove',
   validate: GROUP_ID_ONLY,
   run({ groupId }) {
-    const group = StudyGroups.findOne(groupId);
     StudyGroups.remove(groupId);
   }
 });

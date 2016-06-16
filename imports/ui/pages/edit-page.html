@@ -1,3 +1,63 @@
 <template name="Edit_page">
-  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="well bs-component">
+          <form class="form-horizontal">
+            <fieldset>
+              <legend>Your Student Profile</legend>
+              <div class="form-group">
+                <label class="col-lg-2 control-label">University</label>
+                <div class="col-lg-10">
+                  <select class="form-control" id="university">
+                    {{#each university in universities}}
+                    <option class="js-select-university">{{university}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label">Year</label>
+                <div class="col-lg-10">
+                  <select class="form-control" id="year">
+                    {{#each year in years}}
+                    <option>{{year}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label">Major</label>
+                <div class="col-lg-10">
+                  <select class="form-control" id="major">
+                    {{#each major in majors}}
+                    <option>{{major}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label">Classes</label>
+                <div class="col-lg-10">
+                  <select class="form-control" id="class">
+                    {{#each class in classes}}
+                    <option>{{class}}</option>
+                    {{/each}}
+                  </select>
+                  <br>
+                  <button type="submit" class="btn btn-primary .js-add-class">Add Class</button>
+                  <!-- Displayed added classes here. -->
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-10">
+                  <button type="submit" class="btn btn-primary .js-submit">Continue</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

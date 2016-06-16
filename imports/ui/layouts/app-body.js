@@ -17,8 +17,6 @@ Template.App_body.onCreated(function appBodyOnCreated() {
     FlowRouter.go('App.login');
   }
 
-  // Add subscriptions
-
   this.state = new ReactiveDict();
   this.state.setDefault({
     // Add default state values
