@@ -36,8 +36,6 @@ var years = [
 ];
 
 Template.Edit_page.onCreated(function editPageOnCreated() {
-  // Why does the reactive dictionary seem to not be working?
-
   this.state = new ReactiveDict();
   this.state.setDefault({
     university: 'UC Berkeley',
@@ -52,7 +50,7 @@ Template.Edit_page.helpers({
 
   classes() {
     const instance = Template.instance();
-    return universityClasses[instance.state.university];
+    return universityClasses[instance.state.get('university')];
   },
 
   years() {
@@ -65,23 +63,40 @@ Template.Edit_page.helpers({
 
   classesAdded() {
     const instance = Template.instance();
-    return instance.state.classesAdded;
+    return instance.state.get('classesAdded');
   }
 });
 
 Template.Edit_page.events({
-  'click .js-select-university'(event, instance) {
-    // Double check that this.text() works!!!
-    instance.state.set('university', this.text());
+  'change #university'(event, instance) {
+    const target = event.target;
+    const text = target.value;
+    instance.state.set('university', text);
+    instance.state.set('classesAdded', []);
   },
 
-  'click .js-add-class'(event) {
+  'click .js-add-class'(event, instance) {
     event.preventDefault();
-
-    // Add class to reactive dictionary
+    var classesAdded = instance.state.get('classesAdded');
+    const target = $('#class');
+    const text = target.val();
+    if (!classesAdded.includes(text)) {
+      classesAdded.push(text);
+      instance.state.set('classesAdded', classesAdded);
+    }
   },
 
-  'click .js-submit'(event) {
+  'click .js-remove-class'(event, instance) {
+    event.preventDefault();
+    var classesAdded = instance.state.get('classesAdded');
+    const target = event.target;
+    const text = target.value;
+    const index = classesAdded.indexOf(text);
+    classesAdded.splice(index, 1);
+    instance.state.set('classesAdded', classesAdded);
+  },
+
+  'click .js-submit'(event, instance) {
     event.preventDefault();
 
     // Create student data using form inputs

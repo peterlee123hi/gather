@@ -11,7 +11,7 @@
                 <div class="col-lg-10">
                   <select class="form-control" id="university">
                     {{#each university in universities}}
-                    <option class="js-select-university">{{university}}</option>
+                      <option>{{university}}</option>
                     {{/each}}
                   </select>
                 </div>
@@ -21,7 +21,7 @@
                 <div class="col-lg-10">
                   <select class="form-control" id="year">
                     {{#each year in years}}
-                    <option>{{year}}</option>
+                      <option>{{year}}</option>
                     {{/each}}
                   </select>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="col-lg-10">
                   <select class="form-control" id="major">
                     {{#each major in majors}}
-                    <option>{{major}}</option>
+                      <option>{{major}}</option>
                     {{/each}}
                   </select>
                 </div>
@@ -41,17 +41,20 @@
                 <div class="col-lg-10">
                   <select class="form-control" id="class">
                     {{#each class in classes}}
-                    <option>{{class}}</option>
+                      <option>{{class}}</option>
                     {{/each}}
                   </select>
                   <br>
-                  <button type="submit" class="btn btn-primary .js-add-class">Add Class</button>
-                  <!-- Displayed added classes here. -->
+                  <button class="btn btn-primary js-add-class">Add Class</button>
+                  <hr>
+                  {{#each class in classesAdded}}
+                    <a class="btn btn-danger js-remove-class">{{class}}</a>
+                  {{/each}}
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-md-10">
-                  <button type="submit" class="btn btn-primary .js-submit">Continue</button>
+                  <button class="btn btn-primary js-submit">Continue</button>
                 </div>
               </div>
             </fieldset>
