@@ -2,12 +2,14 @@ import { Meteor } from 'meteor/meteor';
 import { DDPRateLimiter } from 'meteor/ddp-rate-limiter';
 import { _ } from 'meteor/underscore';
 
-// Don't let people write arbitrary data to their 'profile' field from the client
+// For now, allow clients to write to profile...
+/*
 Meteor.users.deny({
   update() {
     return true;
   },
 });
+*/
 
 const AUTH_METHODS = [
   'login',

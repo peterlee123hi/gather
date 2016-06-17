@@ -45,6 +45,19 @@ Template.Edit_page.onCreated(function editPageOnCreated() {
   });
 });
 
+Template.Edit_page.onRendered(function editPageOnRendered() {
+  if (!!Meteor.user().profile.studentData) {
+    const studentData = Meteor.user().profile.studentData;
+
+    this.state.set('university', studentData.university);
+    this.state.set('classesAdded', studentData.classes);
+
+    $('#university').val(studentData.university);
+    $('#year').val(studentData.year);
+    $('#major').val(studentData.major);
+  }
+});
+
 Template.Edit_page.helpers({
   universities() {
     return Object.keys(universityClasses);
@@ -138,6 +151,20 @@ Template.Edit_page.events({
           'profile.studentData': studentData
         }
       });
+
+      // Add Facebook profile here...
+      var getFacebookProfilePicture = function() {
+        return "http://graph.facebook.com/" +
+          Meteor.user().services.facebook.id +
+          "/picture/?type=square&height=300&width=300";
+      }
+      if (!Meteor.user().profile.picture) {
+        Meteor.users.update(Meteor.userId(), {
+          $set: {
+            'profile.studentData.picture': getFacebookProfilePicture()
+          }
+        });
+      }
 
       FlowRouter.go('App.home');
     }

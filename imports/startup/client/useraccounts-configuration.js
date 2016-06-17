@@ -5,12 +5,6 @@ Accounts.onLogin(function() {
   if (!Meteor.user().profile.studentData) {
     FlowRouter.go('App.edit');
   } else {
-    Flowrouter.go('App.home');
-  }
-});
-
-AccountsTemplates.configure({
-  onLogoutHook: () => {
-    FlowRouter.go('login');
+    FlowRouter.go('App.home');
   }
 });
