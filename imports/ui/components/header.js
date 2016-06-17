@@ -31,8 +31,7 @@ Template.App_header.events({
 
   'click #search-student'(event) {
     event.preventDefault();
-    Session.set('studentSearchQuery', $('search-box').val());
-    $('search-box').val('');
+    Session.set('studentSearchQuery', $('#search-box').val());
   },
 
   'click #brand'() {

@@ -1,3 +1,12 @@
 <template name="App_sidebar">
-  
+  <div class="list-group">
+    {{#if isPage 'create'}}
+      <a class="list-group-item">Create</a>
+      <a class="list-group-item">Cancel</a>
+    {{else}}
+      {{#each class in classes}}
+        <a class="list-group-item {{selectedClass class}} class">{{class}}</a>
+      {{/each}}
+    {{/if}}
+  </div>
 </template>
