@@ -6,7 +6,7 @@ import './login-body.html';
 
 Template.Login_body.onCreated(function loginBodyOnCreated() {
   if (!!Meteor.user()) {
-    if (!Meteor.user().studentData) {
+    if (!Meteor.user().profile.studentData) {
       FlowRouter.go('App.edit');
     } else {
       FlowRouter.go('App.home');

@@ -15,7 +15,7 @@ import '../components/sidebar.js';
 Template.App_body.onCreated(function appBodyOnCreated() {
   if (!Meteor.user()) {
     FlowRouter.go('App.login');
-  } else if (!Meteor.user().studentData) {
+  } else if (!Meteor.user().profile.studentData) {
     FlowRouter.go('App.edit');
   };
 

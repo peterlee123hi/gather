@@ -2,6 +2,7 @@ import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './edit-page.html';
 
@@ -39,7 +40,8 @@ Template.Edit_page.onCreated(function editPageOnCreated() {
   this.state = new ReactiveDict();
   this.state.setDefault({
     university: 'UC Berkeley',
-    classesAdded: []
+    classesAdded: [],
+    invalidClassSelection: false
   });
 });
 
@@ -64,6 +66,11 @@ Template.Edit_page.helpers({
   classesAdded() {
     const instance = Template.instance();
     return instance.state.get('classesAdded');
+  },
+
+  invalidClassSelection() {
+    const instance = Template.instance();
+    return instance.state.get('invalidClassSelection') && 'has-error';
   }
 });
 
@@ -99,8 +106,40 @@ Template.Edit_page.events({
   'click .js-submit'(event, instance) {
     event.preventDefault();
 
-    // Create student data using form inputs
-    // Add to user object in users collection
-    // Redirect to home page
+    const university = instance.state.get('university');
+    const classesAdded = instance.state.get('classesAdded');
+    const year = $('#year').val();
+    const major = $('#major').val();
+
+    const validateForm = function() {
+      var valid = true;
+
+      if (instance.state.get('classesAdded').length == 0) {
+        instance.state.set('invalidClassSelection', true);
+        valid = false;
+      } else {
+        instance.state.set('invalidClassSelection', false);
+        valid = valid && true;
+      }
+
+      return valid;
+    }
+
+    if (validateForm()) {
+      const studentData = {
+        'university': university,
+        'classes': classesAdded,
+        'year': year,
+        'major': major
+      };
+
+      Meteor.users.update(Meteor.userId(), {
+        $set: {
+          'profile.studentData': studentData
+        }
+      });
+
+      FlowRouter.go('App.home');
+    }
   }
 });
