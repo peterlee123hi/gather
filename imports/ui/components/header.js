@@ -35,6 +35,6 @@ Template.App_header.events({
   },
 
   'click #brand'() {
-    Session.set('page.users');
+    Session.set('page', 'users');
   }
 });
