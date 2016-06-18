@@ -66,6 +66,18 @@ Template.App_user.helpers({
 
 Template.App_user.events({
   'click .user-panel'(event, instance) {
+    if (instance.state.get('selected')) {
+      var selectedClassmates = Session.get('selectedClassmates');
+      var studentID = this.student._id;
+      var index = selectedClassmates.indexOf(studentID);
+      selectedClassmates.splice(index, 1);
+      Session.set('selectedClassmates', selectedClassmates);
+    } else {
+      var selectedClassmates = Session.get('selectedClassmates');
+      var studentID = this.student._id;
+      selectedClassmates.push(studentID);
+      Session.set('selectedClassmates', selectedClassmates);
+    }
     instance.state.set('selected', !instance.state.get('selected'));
   }
 });
