@@ -1,3 +1,21 @@
 <template name="App_user">
-  
+  <div class="col-md-4">
+    <div class="panel panel-primary user-panel">
+      <div class="panel-heading">
+        <div class="img-container">
+          <img src="{{studentImage}}" width="75px" height="75px">
+        </div>
+        <h3 class="panel-title">{{studentName}}</h3>
+      </div>
+      <div class="panel-body">
+        <p><strong>{{studentUniversity}}</strong></p>
+        <p><strong>{{studentMajor}}</strong></p>
+        <p><strong>{{studentYear}}</strong></p>
+        <div class="icon-container">
+          <a href="mailto:{{studentEmail}}" target="_blank"><i class="fa fa-envelope-o fa-lg"></i></a>
+          <a href="{{studentFacebook}}" target="_blank"><i class="fa fa-facebook-official fa-lg"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

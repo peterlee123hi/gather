@@ -3,6 +3,8 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 
+import './user.js';
+
 import './users-view.html';
 
 Template.Users_view.onCreated(function usersViewOnCreated() {
@@ -23,5 +25,10 @@ Template.Users_view.helpers({
       }
     });
     return ids;
+  },
+
+  getStudent(id) {
+    var student = Meteor.users.findOne(id);
+    return student;
   }
 });

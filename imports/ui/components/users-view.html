@@ -1,6 +1,5 @@
 <template name="Users_view">
-  <h1>Classmate IDs</h1>
   {{#each id in classmateIDs}}
-    <p>{{id}}</p>
+    {{> App_user student=(getStudent id)}}
   {{/each}}
 </template>

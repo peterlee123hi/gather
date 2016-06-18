@@ -1,0 +1,38 @@
+$primary-color: #2196f3;
+
+.user-panel {
+  .panel-heading {
+    text-align: center;
+  }
+
+  .img-container {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding-bottom: 10px
+  }
+
+  img {
+    display: inline-block;
+    border: 3px white solid;
+    border-radius: 50%;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .icon-container {
+    padding-top: 12px;
+    width: 100%;
+    text-align: center;
+
+    a {
+      margin: 5px;
+      padding: 10px;
+      border-radius: 50%;
+      background-color: $primary-color;
+      color: white;
+    }
+  }
+}
