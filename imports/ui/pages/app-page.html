@@ -1,3 +1,15 @@
 <template name="App_page">
-  {{> Users_view}}
+  <!-- Yes, I know this is fugly code... -->
+  {{#if isPage 'users'}}
+    {{> Users_view}}
+  {{else}}
+  {{#if isPage 'studyGroups'}}
+    {{> Study_groups_view}}
+  {{else}}
+  {{#if isPage 'create'}}
+    {{> Create_view}}
+    {{> Users_view}}
+  {{/if}}
+  {{/if}}
+  {{/if}}
 </template>
