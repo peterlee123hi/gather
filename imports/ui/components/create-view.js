@@ -25,5 +25,6 @@ Template.Create_view.events({
     const target = event.target;
     const text = target.value;
     Session.set('selectedClass', text);
+    Session.set('selectedClassmates', []);
   }
 });

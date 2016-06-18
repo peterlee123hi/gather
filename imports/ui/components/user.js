@@ -1,21 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { ReactiveVar } from 'meteor/reactive-var';
-import { ReactiveDict } from 'meteor/reactive-dict';
 import { $ } from 'meteor/jquery';
 
 import './user.html';
 
 var selectedColor = '#4caf50';
 var unselectedColor = '#2196f3';
-
-Template.App_user.onCreated(function appUserOnCreated() {
-  this.state = new ReactiveDict();
-  this.state.setDefault({
-    'selected': false
-  });
-});
 
 Template.App_user.onRendered(function appUserOnRendered() {
   if (Session.get('page') === 'create') {
@@ -26,8 +17,13 @@ Template.App_user.onRendered(function appUserOnRendered() {
 Template.App_user.helpers({
   selected() {
     const instance = Template.instance();
+    var studentID = this.student._id;
+    const isSelected = function() {
+      return $.inArray(studentID, Session.get('selectedClassmates')) !== -1;
+    };
+    console.log(isSelected());
     return Session.get('page') === 'create' &&
-      instance.state.get('selected') && 
+      isSelected() && 
       'selected';
   },
 
@@ -66,18 +62,20 @@ Template.App_user.helpers({
 
 Template.App_user.events({
   'click .user-panel'(event, instance) {
-    if (instance.state.get('selected')) {
+    if (Session.get('page') === 'create') {
       var selectedClassmates = Session.get('selectedClassmates');
-      var studentID = this.student._id;
-      var index = selectedClassmates.indexOf(studentID);
-      selectedClassmates.splice(index, 1);
-      Session.set('selectedClassmates', selectedClassmates);
-    } else {
-      var selectedClassmates = Session.get('selectedClassmates');
-      var studentID = this.student._id;
-      selectedClassmates.push(studentID);
-      Session.set('selectedClassmates', selectedClassmates);
+      var studentID = this.student._id; 
+      const isSelected = function() {
+        return $.inArray(studentID, Session.get('selectedClassmates')) !== -1;
+      };
+      if (isSelected()) {
+        var index = selectedClassmates.indexOf(studentID);
+        selectedClassmates.splice(index, 1);
+        Session.set('selectedClassmates', selectedClassmates);
+      } else {
+        selectedClassmates.push(studentID);
+        Session.set('selectedClassmates', selectedClassmates);
+      }
     }
-    instance.state.set('selected', !instance.state.get('selected'));
   }
 });
