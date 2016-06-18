@@ -1,6 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { ReactiveVar } from 'meteor/reactive-var';
-import { ReactiveDict } from 'meteor/reactive-dict';
 import { StudyGroups } from '../../api/study-groups/study-groups.js';
 import { Template } from 'meteor/templating';
 import { ActiveRoute } from 'meteor/zimme:active-route';
@@ -16,6 +14,7 @@ Template.App_body.onCreated(function appBodyOnCreated() {
   this.subscribe('studyGroups');
 
   Session.set('page', 'users');
+  Session.set('selectedClassmates', []);
 });
 
 Template.App_body.onRendered(function appBodyOnRendered() {

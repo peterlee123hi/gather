@@ -1,8 +1,16 @@
 $primary-color: #2196f3;
+$link-hover-color: darken($primary-color, 15%);
+$selected-color: #45bf55;
+$selected-hover-color: darken($selected-color, 15%);
+
 
 .user-panel {
   .panel-heading {
     text-align: center;
+  }
+
+  .panel-heading.selected {
+    background-color: $selected-color;
   }
 
   .img-container {
@@ -33,6 +41,18 @@ $primary-color: #2196f3;
       border-radius: 50%;
       background-color: $primary-color;
       color: white;
+    }
+
+    a:hover {
+      background-color: $link-hover-color;
+    }
+
+    a.selected {
+      background-color: $selected-color;
+    }
+
+    a.selected:hover {
+      background-color: $selected-hover-color;
     }
   }
 }

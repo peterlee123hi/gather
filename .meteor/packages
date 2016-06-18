@@ -33,3 +33,4 @@ reactive-dict
 ddp-rate-limiter
 mdg:validated-method
 fortawesome:fontawesome
+rajit:bootstrap3-datepicker
