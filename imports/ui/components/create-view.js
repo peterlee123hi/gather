@@ -7,6 +7,7 @@ import './create-view.html';
 
 Template.Create_view.onCreated(function createViewOnCreated() {
   Session.set('selectClassmates', true);
+  Session.set('selectedClassmates', []);
 });
 
 Template.Create_view.onRendered(function createViewOnRendered() {
